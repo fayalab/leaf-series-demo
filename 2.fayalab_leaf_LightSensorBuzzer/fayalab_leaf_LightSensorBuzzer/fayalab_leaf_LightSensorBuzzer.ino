@@ -28,10 +28,13 @@ void loop() {
   // read the value from the sensor:
   sensorValue = analogRead(pin_Lightsensor);
   //Serial.println(sensorValue);  
-  // active the buzzse 
+  //Active the buzzse 
   digitalWrite(pin_Buzzer, HIGH);  
-  // calculate the frequency of buzzer
+  //Calculate the frequency of buzzer
+  //Here are 2 ways to calculate the frequency, you can try both and see what happen! 
+  //1.Use sqrt function
   //frequency = 1023-((sqrt(1023-sensorValue)*70));
+  //2.Use map function(recommend)
   frequency = map(sensorValue, 0, 1023, 0, 1500);
   Serial.print("Sensor value: ");
   Serial.println(sensorValue); 
