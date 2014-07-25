@@ -27,11 +27,18 @@ void setup() {
 void loop() {
   // read the value from the sensor:
   sensorValue = analogRead(pin_Lightsensor);
-  Serial.println(sensorValue);  
+  //Serial.println(sensorValue);  
   // active the buzzse 
   digitalWrite(pin_Buzzer, HIGH);  
   // calculate the frequency of buzzer
-  frequency = sqrt(1023-sensorValue)*70;
+  //frequency = 1023-((sqrt(1023-sensorValue)*70));
+  frequency = map(sensorValue, 0, 1023, 0, 1500);
+  Serial.print("Sensor value: ");
+  Serial.println(sensorValue); 
+  Serial.print("Frequency : ");
+  Serial.println(frequency);  
+  if (frequency<=0)
+    frequency = 1;
   delay(frequency);  
   // turn off the buzzer        
   digitalWrite(pin_Buzzer, LOW);   
